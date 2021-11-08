@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Foodiee Junction</title>
+    <link rel="stylesheet" href="menu.css">
+    <link rel="icon" href="https://www.pngitem.com/pimgs/m/161-1610568_foodies-logo-copy-small-foodies-logo-hd-png.png">
+</head>
+<body>
+    <header>
+        <div id="navbar">
+            <a href="./index.html">Home</a>
+            <a href="./menu.html">Menu</a>
+            <a href="./cart.html">Cart</a>
+            <a href="./login.html">Log In</a>
+            <a href="./signup.html">Sign Up</a>
+        </div>   
+    </header>    
+    <div> </div>
+    <div id="container"> </div>
+</body>
+</html>
+
+<script>
+
+
+let container = document.getElementById("container");
+
+async function dishes() {
+
+ let res = await fetch("https://www.themealdb.com/api/json/v1/1/search.php?f=c");
+
+ let data = await res.json();
+
+append(data.meals);
+
+ console.log(data);
+}
+
+function append(dishs) {
+   
+        dishs.forEach((item) => {
+            
+    let div = document.createElement("div");
+
+    let img = document.createElement("img");
+    
+    img.src = item.strMealThumb;
+    
+    let dish = document.createElement("h2");
+
+    dish.style.color = "rgb(255, 90, 61)"
+    
+    dish.innerHTML = item.strMeal;
+
+    let type = document.createElement('h3');
+
+    type.innerHTML =item.strTags;
+
+    let Btn = document.createElement('button');
+
+    Btn.innerText = "Add to Cart";
+
+    div.append(img,dish,type,Btn);
+    
+    container.append(div);
+    
+        });
+    }
+dishes()
+
+</script>
