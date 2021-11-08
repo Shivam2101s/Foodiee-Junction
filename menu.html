@@ -49,21 +49,25 @@ function append(dishs) {
     
     img.src = item.strMealThumb;
     
-    let dish = document.createElement("h2");
+    let dish = document.createElement("h3");
 
     dish.style.color = "rgb(255, 90, 61)"
     
     dish.innerHTML = item.strMeal;
 
-    let type = document.createElement('h3');
+    let type = document.createElement('h4');
 
     type.innerHTML =item.strTags;
+
+    let price = document.createElement('p');
+
+    price.innerText = "Price : ₹ 199 "
 
     let Btn = document.createElement('button');
 
     Btn.innerText = "Add to Cart";
 
-    div.append(img,dish,type,Btn);
+    div.append(img,dish,type,price,Btn);
     
     container.append(div);
     
